@@ -1,0 +1,57 @@
+:root {
+    --main-size: 100px;
+}
+
+.navbar {
+    background: var(--search-input_background, linear-gradient(180deg, var(--palette-grey0) 39.9%, var(--f8f8f8, #f8f8f8) 100%));
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 32px 41px;
+}
+
+.nav_buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.nav_button {
+    margin: 0 10px;
+}
+
+.right_buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.nav_tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border-bottom: 3px solid transparent;
+    color: #6a6a6a;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav_tab:hover {
+    color: #222222;
+    border-bottom-color: #dddddd;
+}
+
+.nav_tab.active {
+    color: #222222;
+    font-weight: 500;
+    border-bottom-color: #222222;
+    border-bottom-width: 5px;
+}
+
+.nav_icon {
+    width: var(--main-size);
+    object-fit: contain;
+    pointer-events: none;
+}
