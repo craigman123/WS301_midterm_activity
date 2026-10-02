@@ -1,0 +1,136 @@
+.navbar {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.below_selections {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: clamp(0.5rem, 2vw, 1.5rem) 0 clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.search_bar {
+    display: flex;
+    align-items: stretch;
+    width: min(100%, 50rem);
+    height: clamp(3.5rem, 6vw, 4.5rem);
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 999px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search_field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 0.5rem;
+    padding: 0 clamp(0.75rem, 2.5vw, 1.75rem);
+    position: relative;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.search_where {
+    flex-grow: 1.4;
+}
+
+.search_who {
+    flex-grow: 1.2;
+    padding-right: clamp(0.4rem, 1vw, 0.5rem);
+}
+
+.search_field + .search_field::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: #dddddd;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.search_field:hover {
+    background: #ebebeb;
+}
+
+.search_field:focus-within {
+    background: #ffffff;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    z-index: 1;
+}
+
+.search_field:hover::before,
+.search_field:focus-within::before,
+.search_field:hover + .search_field::before,
+.search_field:focus-within + .search_field::before {
+    opacity: 0;
+}
+
+.search_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.search_label {
+    font-size: clamp(0.7rem, 0.5vw + 0.5rem, 0.8125rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #222222;
+}
+
+.search_input {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    font-size: clamp(0.8rem, 0.6vw + 0.55rem, 0.9375rem);
+    color: #222222;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.search_input:focus {
+    cursor: text;
+}
+
+.search_input::placeholder {
+    color: #6a6a6a;
+    opacity: 1;
+}
+
+.search_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: clamp(2.5rem, 4vw, 3rem);
+    aspect-ratio: 1;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #ff385c;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.search_btn:hover {
+    background: #e31c5f;
+}
+
+.search_btn svg {
+    width: 45%;
+    height: 45%;
+}
