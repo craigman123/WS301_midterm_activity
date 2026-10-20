@@ -225,4 +225,8 @@
         border-radius: 0;
         box-shadow: none;
     }
+
+    [data-include*="footer"] {
+        display: none;
+    }
 }
