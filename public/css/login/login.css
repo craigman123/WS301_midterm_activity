@@ -69,35 +69,36 @@
 }
 
 .login_stage {
+    display: grid;
     place-items: center;
-    padding: 7rem 5rem;
+    padding: clamp(2rem, 8vw, 7rem) clamp(1rem, 5vw, 5rem);
     background: url("../../assets/images/bg.webp") center / cover no-repeat;
 }
 
 .login_card {
     width: 100%;
     max-width: 36rem;
-    padding: 3rem 1.75rem 4rem;
-    border-radius: 2rem;
+    padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 1.75rem) clamp(2.5rem, 6vw, 4rem);
+    border-radius: clamp(1.5rem, 4vw, 2rem);
     background: #ffffff;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
     text-align: center;
 }
 
+.login_title {
+    margin: 0.75rem 0 clamp(1.5rem, 4vw, 2.5rem);
+    color: #222222;
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
 .login_mark {
     display: block;
-    width: 3rem;
+    width: clamp(2.5rem, 6vw, 3rem);
     height: auto;
     margin: 0 auto;
     color: #ff385c;
-}
-
-.login_title {
-    margin: 0.75rem 0 2.5rem;
-    color: #222222;
-    font-size: 1.75rem;
-    font-weight: 600;
-    line-height: 1.2;
 }
 
 .login_field {
@@ -107,14 +108,14 @@
 
 .login_input {
     width: 100%;
-    height: 4.375rem;
+    height: clamp(3.5rem, 8vw, 4.375rem);
     padding: 0 1.25rem;
     border: 1px solid #b0b0b0;
     border-radius: 0.5rem;
     background: #ffffff;
     color: #222222;
     font: inherit;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     outline: none;
 }
 
@@ -146,7 +147,7 @@
 
 .login_continue {
     width: 100%;
-    height: 3.5rem;
+    height: clamp(3rem, 7vw, 3.5rem);
     margin-top: 1rem;
     border: none;
     border-radius: 0.5rem;
@@ -189,8 +190,8 @@
 .login_provider {
     display: grid;
     place-items: center;
-    width: 4.5rem;
-    height: 4.5rem;
+    width: clamp(3.5rem, 8vw, 4.5rem);
+    height: clamp(3.5rem, 8vw, 4.5rem);
     border: 1px solid #dddddd;
     border-radius: 0.75rem;
     background: #ffffff;
@@ -208,13 +209,20 @@
     height: 1.5rem;
 }
 
-@media (max-width: 600px) {
-    .login_card {
-        padding: 2rem 1.25rem 2.5rem;
-        border-radius: 1.5rem;
+@media (max-width: 500px) {
+    .login_header {
+        display: none;
     }
 
-    .login_host {
-        display: none;
+    .login_stage {
+        align-items: start;
+        padding: 0;
+        background: #ffffff;
+    }
+
+    .login_card {
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
     }
 }

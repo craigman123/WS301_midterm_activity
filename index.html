@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="public/css/search/search.css">
     <link rel="stylesheet" href="public/css/places/places.css">
     <link rel="stylesheet" href="public/css/footer/footer.css">
+    <link rel="stylesheet" href="public/css/navbar/mobile.css">
 </head>
 <body>
     <header class="hero">
@@ -78,20 +79,28 @@
             </div>
 
             <button class="compact_search" type="button" aria-label="Start your search">
-                    <span class="compact_item compact_where">
-                        <video class="compact_icon" muted playsinline preload="auto">
-                            <source src="public/assets/video/twirl/house-twirl-selected.webm" type="video/webm">
-                        </video>
-                        <span class="compact_label">Anywhere</span>
-                    </span>
-                    <span class="compact_item compact_label" >Anytime</span>
-                    <span class="compact_item compact_label">Add guests</span>
-                    <span class="compact_btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true">
-                            <circle cx="14" cy="14" r="9"/>
-                            <line x1="21" y1="21" x2="28" y2="28"/>
-                        </svg>
-                    </span>
+                <span class="compact_item compact_where">
+                    <video class="compact_icon" muted playsinline preload="auto">
+                        <source src="public/assets/video/twirl/house-twirl-selected.webm" type="video/webm">
+                    </video>
+                    <span class="compact_label">Anywhere</span>
+                </span>
+                <span class="compact_item compact_label" >Anytime</span>
+                <span class="compact_item compact_label">Add guests</span>
+                <span class="compact_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="14" cy="14" r="9"/>
+                        <line x1="21" y1="21" x2="28" y2="28"/>
+                    </svg>
+                </span>
+            </button>
+
+                <button class="mobile_search" type="button" aria-label="Start your search">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="14" cy="14" r="9"/>
+                        <line x1="21" y1="21" x2="28" y2="28"/>
+                    </svg>
+                    <span>Start your search</span>
                 </button>
 
             <div class="right_buttons">
@@ -155,6 +164,31 @@
 
     <div data-include="views/places.html"></div>
     <div data-include="views/footer.html"></div>
+
+
+    <nav class="bottom_bar" aria-label="Main">
+        <a class="bottom_item active" href="/index.html">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <circle cx="14" cy="14" r="9"/>
+                <line x1="21" y1="21" x2="28" y2="28"/>
+            </svg>
+            <span>Explore</span>
+        </a>
+        <button class="bottom_item" type="button">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 28C7 21 3 16.5 3 11.5 3 7.9 5.7 5 9.2 5c2.8 0 5.1 1.6 6.8 4 1.7-2.4 4-4 6.8-4C26.3 5 29 7.9 29 11.5c0 5-4 9.5-13 16.5z"/>
+            </svg>
+            <span>Wishlists</span>
+        </button>
+        <a class="bottom_item" href="/views/login.html">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="16" cy="16" r="12"/>
+                <circle cx="16" cy="13" r="4"/>
+                <path d="M8 25c1.5-3 4.4-4.5 8-4.5s6.5 1.5 8 4.5"/>
+            </svg>
+            <span>Log in</span>
+        </a>
+    </nav>
 
     <script src="public/js/navbar.js"></script>
     <script src="public/js/places.js"></script>
