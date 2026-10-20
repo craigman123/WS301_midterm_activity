@@ -1,5 +1,19 @@
 :root {
     --palette-grey0: #FFFFFF;
+    --page-max-width: 1760px;
+    --page-gutter: clamp(1.5rem, 5vw, 5rem);
+}
+
+body {
+    overflow-anchor: none;
+}
+
+.container,
+.places {
+    width: 100%;
+    max-width: var(--page-max-width);
+    margin-inline: auto;
+    padding-inline: var(--page-gutter);
 }
 
 * {
@@ -23,12 +37,11 @@ body {
 .logo {
     flex: 1 1 0;
     display: flex;
-    align-items: center;
     justify-content: flex-start;
 }
 
 .logo svg {
-    width: clamp(4.5rem, 9vw, 6.3rem);
+    width: 6.5rem;
     height: auto;
     color: #FF385C;
 }
@@ -39,6 +52,6 @@ body {
     border: none;
     background: none;
     cursor: pointer;
-    font-size: clamp(0.875rem, 1vw + 0.4rem, 1.2rem);
-    font-weight: 200;
+    font-size: 0.875rem;
+    font-weight: 500;
 }

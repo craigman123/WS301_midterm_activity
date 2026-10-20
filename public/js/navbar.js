@@ -1,6 +1,6 @@
 const tabs = document.querySelectorAll(".nav_tab");
 const container = document.querySelector(".nav_buttons");
-const INTRO_DELAY = 180;
+const clicked = new Set();
 
 const indicator = document.createElement("span");
 indicator.className = "nav_indicator";
@@ -19,22 +19,24 @@ function showIcon(tab, kind) {
     active.play().catch(() => {});
 }
 
-function growIcon(tab, kind) {
+function growIcon(tab) {
     const box = tab.querySelector(".video_container");
+    if (box.classList.contains("grown")) return Promise.resolve();
 
-    if (box.classList.contains("grown")) {
-        showIcon(tab, kind);
-        return;
-    }
+    return new Promise((resolve) => {
+        const done = () => {
+            box.removeEventListener("transitionend", onEnd);
+            clearTimeout(fallback);
+            resolve();
+        };
+        const onEnd = (event) => {
+            if (event.target === box) done();
+        };
+        const fallback = setTimeout(done, 150);
 
-    const onEnd = (event) => {
-        if (event.target !== box) return;
-        box.removeEventListener("transitionend", onEnd);
-        showIcon(tab, kind);
-    };
-
-    box.addEventListener("transitionend", onEnd);
-    box.classList.add("grown");
+        box.addEventListener("transitionend", onEnd);
+        box.classList.add("grown");
+    });
 }
 
 function moveIndicator(tab, animate) {
@@ -51,18 +53,23 @@ function currentTab() {
 }
 
 tabs.forEach((tab) => {
-
-    tab.addEventListener("click", () => {
+    tab.addEventListener("click", async () => {
+        clicked.add(tab);
         tabs.forEach((t) => t.classList.remove("active"));
         tab.classList.add("active");
         moveIndicator(tab, true);
-        growIcon(tab, "selected");
+        await growIcon(tab);
+        if (tab.classList.contains("active")) showIcon(tab, "selected");
     });
 });
 
-tabs.forEach((tab, index) => {
-    setTimeout(() => growIcon(tab, "twirl"), index * INTRO_DELAY);
-});
+async function runIntro() {
+    for (const tab of tabs) {
+        await growIcon(tab);
+        if (!clicked.has(tab)) showIcon(tab, "twirl");
+    }
+}
+runIntro();
 
 const observer = new ResizeObserver(() => {
     const tab = currentTab();
@@ -78,3 +85,54 @@ if (document.fonts && document.fonts.ready) {
         if (tab) moveIndicator(tab, false);
     });
 }
+
+const hero = document.querySelector(".hero");
+const topBar = document.querySelector(".top-navbar");
+const belowBar = document.querySelector(".below_selections");
+const compactSearch = document.querySelector(".compact_search");
+const compactIcon = document.querySelector(".compact_icon");
+const scrollThreshold = 8;
+
+let expandedHeight = 0;
+let compactHeight = 0;
+
+function measureHeights() {
+    compactHeight = topBar.offsetHeight;
+    expandedHeight = compactHeight + belowBar.scrollHeight;
+}
+
+function updateHero() {
+    const y = window.scrollY;
+    hero.classList.toggle("scrolled", y > scrollThreshold);
+    hero.style.height = Math.max(compactHeight, expandedHeight - y) + "px";
+}
+
+function showIconRestFrame() {
+    compactIcon.currentTime = Math.max(compactIcon.duration - 0.05, 0);
+}
+
+if (compactIcon.readyState >= 1) {
+    showIconRestFrame();
+} else {
+    compactIcon.addEventListener("loadedmetadata", showIconRestFrame);
+}
+
+compactSearch.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+measureHeights();
+updateHero();
+
+window.addEventListener("scroll", updateHero, { passive: true });
+
+new ResizeObserver(() => {
+    measureHeights();
+    updateHero();
+}).observe(topBar);
+
+const hostButton = document.querySelector(".host_text");
+
+hostButton.addEventListener("click", () => {
+    window.location.href = "/views/login.html";
+});

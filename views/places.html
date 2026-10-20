@@ -1,0 +1,66 @@
+<section class="places" id="places_root"></section>
+
+<template id="place_section_template">
+    <div class="place_section">
+        <div class="place_head">
+            <h2 class="place_heading">
+                <span class="place_heading_text"></span>
+                <button class="place_more" type="button" aria-label="See all places">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 12h16M14 6l6 6-6 6"/>
+                    </svg>
+                </button>
+            </h2>
+            <div class="place_arrows">
+                <button class="place_arrow place_prev" type="button" aria-label="Previous">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 6l-6 6 6 6"/>
+                    </svg>
+                </button>
+                <button class="place_arrow place_next" type="button" aria-label="Next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 6l6 6-6 6"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="place_track"></div>
+    </div>
+</template>
+
+<template id="place_card_template">
+    <article class="place_card">
+        <div class="place_media">
+            <img class="place_image" alt="" loading="lazy">
+            <span class="place_badge">Guest favorite</span>
+            <button class="place_heart" type="button" aria-label="Add to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.9 5 6.3 5c2 0 3.8 1.1 5.7 3.3C13.9 6.1 15.7 5 17.7 5c3.4 0 5.3 3.6 3.9 6.8C19.5 16.4 12 21 12 21z"/>
+                </svg>
+            </button>
+        </div>
+        <h3 class="place_title"></h3>
+        <p class="place_meta">
+            <span class="place_price"></span>
+            <span class="place_dot">&middot;</span>
+            <span class="place_rating">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.3 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/>
+                </svg>
+                <span class="place_rating_value"></span>
+            </span>
+        </p>
+    </article>
+</template>
+
+<template id="place_see_all_template">
+    <a class="place_see_all" href="#">
+        <span class="place_see_all_stack">
+            <img class="place_see_all_img place_see_all_img_1" alt="">
+            <img class="place_see_all_img place_see_all_img_2" alt="">
+            <img class="place_see_all_img place_see_all_img_3" alt="">
+        </span>
+        <span class="place_see_all_text">See all</span>
+    </a>
+</template>
+</body>
