@@ -284,4 +284,15 @@
     .host_btn {
         display: none;
     }
+
+    .btn {
+        text-align: center;
+        /* display: block; */
+        place-items: center;
+        flex-direction: column;
+    }
+
+    .nav_button {
+        margin: 10px 0;
+    }
 }
